@@ -1,0 +1,1 @@
+curl http://127.0.0.1:8000/djangoapp/get_cars {"CarModels": [{"CarMake": "Audi", "CarModel": "A6", "CarYear": 2020}, {"CarMake": "BMW", "CarModel": "X3", "CarYear": 2021}, {"CarMake": "Toyota", "CarModel": "Camry", "CarYear": 2022}]}

@@ -1,0 +1,4 @@
+curl -X POST http://127.0.0.1:8000/djangoapp/login Request body: {
+  "password": "CapstonePass123!",
+  "userName": "capstone_user"
+} {"userName": "capstone_user", "status": "Authenticated"}

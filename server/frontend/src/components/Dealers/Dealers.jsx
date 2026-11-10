@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import "./Dealers.css";
 import "../assets/style.css";
 import Header from '../Header/Header';
 import review_icon from "../assets/reviewicon.png"
 
 const Dealers = () => {
+  const { state: routeState } = useParams();
   const [dealersList, setDealersList] = useState([]);
   // let [state, setState] = useState("")
   let [states, setStates] = useState([])
@@ -15,6 +17,7 @@ const Dealers = () => {
   let dealer_url_by_state = "/djangoapp/get_dealers/";
  
   const filterDealers = async (state) => {
+    window.history.pushState({}, "", state === "All" ? "/dealers" : `/dealers/${state}`);
     dealer_url_by_state = dealer_url_by_state+state;
     const res = await fetch(dealer_url_by_state, {
       method: "GET"
@@ -43,7 +46,11 @@ const Dealers = () => {
     }
   }
   useEffect(() => {
-    get_dealers();
+    if (routeState) {
+      filterDealers(routeState);
+    } else {
+      get_dealers();
+    }
   },[]);  
 
 
